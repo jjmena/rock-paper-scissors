@@ -1,0 +1,36 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "roundId": {
+      "type": "string",
+      "description": "Round identifier"
+    },
+    "firstPlayerOption": {
+      "type": "string",
+      "enum": ["ROCK", "PAPER", "SCISSORS"],
+      "description": "First player game option"
+    },
+    "secondPlayerOption": {
+      "type": "string",
+      "enum": ["ROCK", "PAPER", "SCISSORS"],
+      "description": "Second player game option"
+    },
+    "user": {
+      "$ref": "user.json",
+      "description": "User that requested the game"
+    },
+    "result": {
+      "type": "string",
+      "enum": ["WINNER_PLAYER1", "WINNER_PLAYER2", "DRAW"],
+      "description": "Game result"
+    }
+  },
+  "required": [
+    "roundId",
+    "firstPlayerOption",
+    "secondPlayerOption",
+    "user",
+    "result"
+  ]
+}

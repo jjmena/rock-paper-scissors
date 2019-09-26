@@ -9,6 +9,12 @@ import java.util.UUID;
 public class UserService {
 
     public User create() {
+        // TODO: Save user
         return User.builder().userId(UUID.randomUUID().toString()).build();
     }
+
+    public User findUserById() {
+        return null;
+    }
+
 }

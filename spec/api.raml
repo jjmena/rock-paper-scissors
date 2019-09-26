@@ -1,0 +1,26 @@
+#%RAML 0.8
+title: Rock, Paper, Scissor API
+mediaType: application/json
+
+schemas:
+  - user.json: !include schema/user.json
+  - round.json: !include schema/round.json
+
+/user:
+  post:
+    responses:
+      200:
+        body:
+          schema: user.json
+
+/round:
+  /user/{userId}:
+  uriParameters:
+    userId:
+      type: string
+      description: User that owned the round.
+  post:
+    responses:
+      200:
+        body:
+          schema: round.json
