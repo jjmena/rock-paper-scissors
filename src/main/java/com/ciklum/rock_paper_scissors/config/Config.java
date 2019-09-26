@@ -6,12 +6,14 @@ import com.ciklum.rock_paper_scissors.service.UserService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import static com.ciklum.rock_paper_scissors.domain.GameOption.ROCK;
+
 @Configuration
 public class Config {
 
     @Bean
     public RoundService roundService() {
-        return new RoundService(() -> GameOption.ROCK, () -> GameOption.PAPER);
+        return new RoundService(() -> ROCK, GameOption::randomOption);
     }
 
     @Bean
