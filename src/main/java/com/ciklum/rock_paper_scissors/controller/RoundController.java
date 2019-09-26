@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Optional;
+
 @RequestMapping(value ="/round", produces = MediaType.APPLICATION_JSON_VALUE)
 @RequiredArgsConstructor
 @Slf4j
@@ -27,9 +29,14 @@ public class RoundController {
 
     @PostMapping(value = "/user/{userId}")
     public Round createRound(@PathVariable String userId) {
+
         log.info("[ROUND] Create round request by {} user", userId);
-        // TODO: Find user to create the round
-        return roundService.create(User.builder().userId(userId).build());
+        Optional<User> user = userService.findUserById(userId);
+        if (!user.isPresent()) {
+            // TODO: Complete Bad Request situation when user doesn't exist
+            return null;
+        }
+        return roundService.create(user.get());
     }
 
 }

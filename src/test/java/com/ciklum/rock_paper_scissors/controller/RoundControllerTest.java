@@ -1,5 +1,7 @@
 package com.ciklum.rock_paper_scissors.controller;
 
+import com.ciklum.rock_paper_scissors.domain.User;
+import com.ciklum.rock_paper_scissors.service.UserService;
 import guru.nidi.ramltester.RamlDefinition;
 import guru.nidi.ramltester.RamlLoaders;
 import guru.nidi.ramltester.SimpleReportAggregator;
@@ -14,8 +16,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultActions;
-
-import java.util.UUID;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
@@ -32,20 +32,23 @@ public class RoundControllerTest {
     @Autowired
     private MockMvc mockMvc;
 
+    @Autowired
+    private UserService userService;
+
     @Test
-    public void createRound() throws Exception {
+    public void shouldCreateRoundForExistingUser() throws Exception {
 
         // Given
-        String userId = UUID.randomUUID().toString();
+        User user = userService.create();
 
         // When
-        ResultActions resultActions = mockMvc.perform(post(("/round/user/" + userId)))
+        ResultActions resultActions = mockMvc.perform(post(("/round/user/" + user.getUserId())))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$").isNotEmpty())
                 .andExpect(jsonPath("$.roundId").isNotEmpty())
                 .andExpect(jsonPath("$.firstPlayerOption").value("ROCK"))
                 .andExpect(jsonPath("$.secondPlayerOption").isNotEmpty())
-                .andExpect(jsonPath("$.user.userId").value(userId))
+                .andExpect(jsonPath("$.user.userId").value(user.getUserId()))
                 .andExpect(jsonPath("$.result").isNotEmpty());
 
         // Then
@@ -54,6 +57,11 @@ public class RoundControllerTest {
 
         // TODO: Pending to add Spring Rest Docs
 
+    }
+
+    @Test
+    public void shouldFailCreateRoundForNotExistingUser() {
+        // TODO: To be implemented
     }
 
 }
