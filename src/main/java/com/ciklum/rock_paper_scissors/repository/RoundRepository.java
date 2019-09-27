@@ -18,6 +18,7 @@ public class RoundRepository {
     public Round create(Round.RoundBuilder roundBuilder) {
         Round round = roundBuilder.roundId(UUID.randomUUID().toString()).build();
         rounds.add(round);
+        round.getResult().incrementAndGet();
         return round;
     }
 
