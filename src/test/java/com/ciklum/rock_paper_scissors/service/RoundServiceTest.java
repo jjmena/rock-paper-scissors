@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
+import java.util.Optional;
 import java.util.UUID;
 
 import static com.ciklum.rock_paper_scissors.domain.GameOption.ROCK;
@@ -36,6 +37,20 @@ public class RoundServiceTest {
         assertThat(round.getUser()).isEqualTo(user);
         assertThat(round.getResult()).isNotNull();
 
+    }
+
+    @Test
+    public void shouldRemoveRoundsByUser() {
+        // Given
+        User user = User.builder().userId(UUID.randomUUID().toString()).build();
+        Round round = roundService.create(user);
+
+        // When
+        roundService.delete(user);
+
+        // Then
+        Optional<Round> roundStored = roundService.findById(round.getRoundId());
+        assertThat(roundStored.isPresent()).isFalse();
     }
 
 }

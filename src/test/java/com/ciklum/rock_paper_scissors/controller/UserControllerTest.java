@@ -41,7 +41,7 @@ public class UserControllerTest {
 
         // Then
         RamlReport ramlReport = aggregator.addReport(ramlDefinition.testAgainst(resultActions.andReturn()));
-        MatcherAssert.assertThat(ramlReport, RamlMatchers.validates());
+        MatcherAssert.assertThat(ramlReport, RamlMatchers.hasNoViolations());
 
         // TODO: Pending to add Spring Rest Docs
     }

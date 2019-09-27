@@ -16,16 +16,22 @@ schemas:
 
 /round:
   /user/{userId}:
-  uriParameters:
-    userId:
-      type: string
-      description: User that owned the round.
-  post:
-    responses:
-      200:
-        body:
-          schema: round.json
-      400:
-        body:
-          schema: error.json
+    uriParameters:
+      userId:
+        type: string
+        description: User that owned the round.
+    post:
+      responses:
+        200:
+          body:
+            schema: round.json
+        400:
+          body:
+            schema: error.json
+    delete:
+      responses:
+        200:
+        400:
+          body:
+            schema: error.json
 

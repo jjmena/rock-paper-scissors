@@ -26,7 +26,7 @@ public class RoundRepository {
     }
 
     public int removeByUser(User user) {
-        List<Round> roundsToRemove = rounds.stream().filter(r -> !r.getUser().equals(user)).collect(Collectors.toList());
+        List<Round> roundsToRemove = rounds.stream().filter(r -> r.getUser().equals(user)).collect(Collectors.toList());
         rounds.removeAll(roundsToRemove);
         return roundsToRemove.size();
     }
