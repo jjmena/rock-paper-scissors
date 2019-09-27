@@ -6,9 +6,7 @@ import lombok.Getter;
 import java.util.Arrays;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicInteger;
-import java.util.function.Function;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 import static java.util.function.Function.identity;
 
@@ -39,7 +37,7 @@ public enum Result {
         return Arrays.stream(Result.values()).collect(Collectors.toMap(identity(), r -> r.getCounter().get()));
     }
 
-    public int incrementAndGet() {
+    public int updateStats() {
         return this.counter.incrementAndGet();
     }
 }
