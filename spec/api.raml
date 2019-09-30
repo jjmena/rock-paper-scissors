@@ -11,7 +11,7 @@ schemas:
 /user:
   post:
     responses:
-      200:
+      201:
         body:
           schema: user.json
 
@@ -23,7 +23,7 @@ schemas:
         description: User that owned the round.
     post:
       responses:
-        200:
+        201:
           body:
             schema: round.json
         400:
