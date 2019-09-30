@@ -6,6 +6,7 @@ schemas:
   - user.json: !include schema/user.json
   - round.json: !include schema/round.json
   - error.json: !include schema/error.json
+  - stats.json: !include schema/stats.json
 
 /user:
   post:
@@ -34,4 +35,11 @@ schemas:
         400:
           body:
             schema: error.json
+/stats:
+  get:
+    responses:
+      200:
+        body:
+          schema: stats.json
+
 

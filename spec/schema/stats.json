@@ -1,0 +1,23 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "DRAW": {
+      "type": "integer",
+      "description": "Number of DRAW games"
+    },
+    "WINNER_PLAYER1": {
+      "type": "integer",
+      "description": "Number of games won by Player 1"
+    },
+    "WINNER_PLAYER2": {
+      "type": "integer",
+      "description": "Number of games won by Player 2"
+    }
+  },
+  "required": [
+    "DRAW",
+    "WINNER_PLAYER1",
+    "WINNER_PLAYER2"
+  ]
+}

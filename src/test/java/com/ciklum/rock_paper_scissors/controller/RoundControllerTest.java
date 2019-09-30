@@ -66,8 +66,6 @@ public class RoundControllerTest {
         RamlReport ramlReport = aggregator.addReport(ramlDefinition.testAgainst(resultActions.andReturn()));
         assertThat(ramlReport, RamlMatchers.hasNoViolations());
 
-        // TODO: Pending to add Spring Rest Docs
-
     }
 
     @Test

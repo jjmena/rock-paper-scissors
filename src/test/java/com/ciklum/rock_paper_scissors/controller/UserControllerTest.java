@@ -31,7 +31,7 @@ public class UserControllerTest {
     private MockMvc mockMvc;
 
     @Test
-    public void createUser() throws Exception {
+    public void shouldCreateUser() throws Exception {
 
         // When
         ResultActions resultActions = mockMvc.perform(post(("/user")))
@@ -43,7 +43,6 @@ public class UserControllerTest {
         RamlReport ramlReport = aggregator.addReport(ramlDefinition.testAgainst(resultActions.andReturn()));
         MatcherAssert.assertThat(ramlReport, RamlMatchers.hasNoViolations());
 
-        // TODO: Pending to add Spring Rest Docs
     }
 }
 
