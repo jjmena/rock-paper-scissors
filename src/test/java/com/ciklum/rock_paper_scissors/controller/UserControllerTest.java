@@ -35,7 +35,7 @@ public class UserControllerTest {
 
         // When
         ResultActions resultActions = mockMvc.perform(post(("/user")))
-                .andExpect(status().isOk())
+                .andExpect(status().isCreated())
                 .andExpect(jsonPath("$").isNotEmpty())
                 .andExpect(jsonPath("$.userId").isNotEmpty());
 

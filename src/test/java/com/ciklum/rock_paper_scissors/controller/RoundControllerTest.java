@@ -54,7 +54,7 @@ public class RoundControllerTest {
 
         // When
         ResultActions resultActions = mockMvc.perform(post(("/round/user/" + user.getUserId())))
-                .andExpect(status().isOk())
+                .andExpect(status().isCreated())
                 .andExpect(jsonPath("$").isNotEmpty())
                 .andExpect(jsonPath("$.roundId").isNotEmpty())
                 .andExpect(jsonPath("$.firstPlayerOption").value("ROCK"))
