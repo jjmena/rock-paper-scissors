@@ -17,6 +17,7 @@
     <properties>
         <java.version>1.8</java.version>
         <raml-tester.version>0.8.8</raml-tester.version>
+        <dockerfile-maven-version>1.4.12</dockerfile-maven-version>
     </properties>
 
     <dependencies>
@@ -107,6 +108,27 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>com.spotify</groupId>
+                <artifactId>dockerfile-maven-plugin</artifactId>
+                <version>${dockerfile-maven-version}</version>
+                <executions>
+                    <execution>
+                        <id>default</id>
+                        <goals>
+                            <goal>build</goal>
+                            <goal>push</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <repository>ciklum/rock-paper-scissors</repository>
+                    <tag>${project.version}</tag>
+                    <buildArgs>
+                        <JAR_FILE>rock-paper-scissors-${project.version}.jar</JAR_FILE>
+                    </buildArgs>
+                </configuration>
             </plugin>
         </plugins>
     </build>
