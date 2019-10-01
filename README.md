@@ -24,10 +24,3 @@ REST API documentation is built in RAML. This file is located in
 
 ```spec/api.raml```
 
-
-
-
-
-
-
-

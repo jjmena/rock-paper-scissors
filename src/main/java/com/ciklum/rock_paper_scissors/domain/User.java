@@ -1,12 +1,19 @@
 package com.ciklum.rock_paper_scissors.domain;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-@RequiredArgsConstructor
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
 @Builder
-@Getter
+@Data
+@Entity
+@NoArgsConstructor
+@AllArgsConstructor
 public class User {
-    private final String userId;
+    @Id
+    private String userId;
 }

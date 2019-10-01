@@ -9,7 +9,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import java.util.Optional;
-import java.util.UUID;
 
 import static com.ciklum.rock_paper_scissors.domain.GameOption.ROCK;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -21,10 +20,13 @@ public class RoundServiceTest {
     @Autowired
     private RoundService roundService;
 
+    @Autowired
+    private UserService userService;
+
     @Test
     public void shouldCreateARound() {
         // Given
-        User user = User.builder().userId(UUID.randomUUID().toString()).build();
+        User user = userService.create();
 
         // When
         Round round = roundService.create(user);
@@ -42,7 +44,7 @@ public class RoundServiceTest {
     @Test
     public void shouldRemoveRoundsByUser() {
         // Given
-        User user = User.builder().userId(UUID.randomUUID().toString()).build();
+        User user = userService.create();
         Round round = roundService.create(user);
 
         // When

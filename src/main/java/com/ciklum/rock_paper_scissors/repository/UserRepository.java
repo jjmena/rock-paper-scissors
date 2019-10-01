@@ -1,26 +1,19 @@
 package com.ciklum.rock_paper_scissors.repository;
 
 import com.ciklum.rock_paper_scissors.domain.User;
-import org.springframework.stereotype.Repository;
 
-import java.util.Map;
 import java.util.Optional;
 import java.util.UUID;
-import java.util.concurrent.ConcurrentHashMap;
+import org.springframework.data.repository.Repository;
 
-@Repository
-public class UserRepository {
+public interface UserRepository extends Repository<User, String> {
 
-    private static final Map<String, User> users = new ConcurrentHashMap<>();
-
-    public User create() {
+    default User create() {
         User user = User.builder().userId(UUID.randomUUID().toString()).build();
-        users.put(user.getUserId(), user);
-        return user;
+        return this.save(user);
     }
 
-    public Optional<User> findByUserId(String userId) {
-        return Optional.ofNullable(users.get(userId));
-    }
+    User save(User user);
+    Optional<User> findByUserId(String userId);
 
 }
