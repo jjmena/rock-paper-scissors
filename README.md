@@ -30,12 +30,12 @@ There are two profiles:
 - dev
 - default
 
-Both are configured with the same configuration in 
+Both are configured with the same configuration in:
 
 ``` application.properties ```
 ``` application-dev.properties ```
 
-Both could be configured to change even port, root path and CORS enabled. For example:
+Both could be configured to change the port, root path and CORS enabled hosts. For example:
 
 ```
 application.cors.origins=http://localhost:4000
@@ -44,7 +44,7 @@ server.contextPath =/myapi
 ```
 
 ## Documentation
-REST API documentation is built in RAML. This file is located in
+REST API documentation is built in RAML. This file is located in:
 
 ```spec/api.raml```
 
@@ -52,4 +52,4 @@ It is used to document API exposed and it's used to validate it through existing
 
 It's not exposed in the API as public document. It could be exposed copying it to a `static` folder to enable to share it.
 
-Furthermore, there are existing tools to convert it from RAML to a prettier format such as HTML.
+Furthermore, there are tools to convert from RAML to a prettier format such as HTML.
