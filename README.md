@@ -53,3 +53,15 @@ It is used to document API exposed and it's used to validate it through existing
 It's not exposed in the API as public document. It could be exposed copying it to a `static` folder to enable to share it.
 
 Furthermore, there are tools to convert from RAML to a prettier format such as HTML.
+
+## Container
+
+It's enabled a way to generate a docker image executable with the application itself. To generate it this command should be launched:
+
+``` mvn clean package ```
+
+It will generate a new image tagged with: ciklum/rock-paper-scissors:0.0.1-SNAPSHOT. 
+
+After that it would be launched with: 
+
+``` docker run -p 8080:8080  ciklum/rock-paper-scissors:0.0.1-SNAPSHOT ```
