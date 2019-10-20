@@ -1,16 +1,27 @@
 package com.ciklum.rock_paper_scissors.domain;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
-import lombok.Getter;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-@Getter
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+
 @Builder
+@Data
+@Entity
+@NoArgsConstructor
+@AllArgsConstructor
 public class Round {
 
-    private final String roundId;
-    private final GameOption firstPlayerOption;
-    private final GameOption secondPlayerOption;
-    private final User user;
-    private final Result result;
+    @Id
+    private String roundId;
+    private GameOption firstPlayerOption;
+    private GameOption secondPlayerOption;
+    @ManyToOne
+    private User user;
+    private Result result;
 
 }

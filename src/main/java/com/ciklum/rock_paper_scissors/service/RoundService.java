@@ -7,6 +7,7 @@ import com.ciklum.rock_paper_scissors.domain.User;
 import com.ciklum.rock_paper_scissors.repository.RoundRepository;
 import lombok.RequiredArgsConstructor;
 
+import javax.transaction.Transactional;
 import java.util.Optional;
 
 @RequiredArgsConstructor
@@ -26,6 +27,7 @@ public class RoundService {
                 .result(Result.winner(player1GameOption, player2GameOption)));
     }
 
+    @Transactional
     public void delete(User user) {
         roundRepository.removeByUser(user);
     }
